@@ -1,44 +1,11 @@
 # Scavenger Hunt — Development TODO
 
 **Last Updated:** February 7, 2026
-**Current Sprint:** Feature 1 — Project Skeleton + Start Screen
+**Current Sprint:** Feature 3 — Timer
 
 ---
 
-## Current Sprint: Feature 1 — Project Skeleton + Start Screen
-
-### Setup
-- [x] Create project folder and file structure
-- [x] Create index.html with basic HTML5 boilerplate
-- [x] Create style.css with CSS reset and base styles
-- [x] Create app.js with app shell
-- [x] Create missions.js with all mission data from PRD
-- [x] Create .gitignore
-- [ ] Create GitHub repo
-- [ ] Push initial commit
-
-### Feature Tasks
-- [x] Build start screen layout (title, level selector, Play button)
-- [x] Style level selector — 3 large buttons: Colors, Shapes, Categories
-- [x] Style Play button — big, obvious, 64px+ touch target
-- [x] Add mobile-first responsive layout (375px base)
-- [x] Verify all touch targets are 64px minimum
-- [ ] Test on mobile viewport
-
-### Git Checkpoint
-- [ ] Commit and push: `feat: add start screen with level selector`
-
----
-
-## Up Next
-
-### Feature 2 — Mission Card Display
-- [ ] Create mission card component (large text, centered)
-- [ ] Add color swatch for Level 1 missions (colored circle)
-- [ ] Implement sequential mission selection (shuffle at session start, no repeats)
-- [ ] Wire up Play button to show first mission
-- [ ] Test all three levels display correctly
-- [ ] Commit and push: `feat: add mission card display`
+## Current Sprint: Feature 3 — Timer
 
 ### Feature 3 — Timer
 - [ ] Add 20-second visual countdown (progress bar)
@@ -86,7 +53,19 @@
 
 ## Completed
 
-(Nothing yet — development not started)
+### Feature 1 — Project Skeleton + Start Screen
+- [x] All setup tasks
+- [x] Start screen with level selector and Play button
+- [x] Mobile-first layout, 64px+ touch targets
+- [x] Committed and pushed
+
+### Feature 2 — Mission Card Display
+- [x] Create mission card component (large text, centered)
+- [x] Add color swatch for Level 1 missions (colored circle)
+- [x] Implement sequential mission selection (shuffle at session start, no repeats)
+- [x] Wire up Play button to show first mission
+- [x] Test all three levels display correctly
+- [x] Committed and pushed
 
 ---
 
@@ -112,8 +91,8 @@ Ideas to consider later (don't derail current work):
 
 | Sprint | Feature | Started | Completed |
 |--------|---------|---------|-----------|
-| 1 | Project Skeleton + Start Screen | | |
-| 2 | Mission Card Display | | |
+| 1 | Project Skeleton + Start Screen | 2026-02-07 | 2026-02-07 |
+| 2 | Mission Card Display | 2026-02-07 | 2026-02-07 |
 | 3 | Timer | | |
 | 4 | Star Button + Star Jar | | |
 | 5 | Session Flow | | |

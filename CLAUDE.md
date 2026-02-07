@@ -58,7 +58,7 @@ NEXT STEPS: Need to test on HTTPS — deploy to GitHub Pages first?
 **PRD:** docs/PRD.md
 **TODO:** TODO.md
 **CHANGELOG:** CHANGELOG.md
-**GitHub:** [URL — create during setup]
+**GitHub:** https://github.com/BleacherPeanuts/scavenger-hunt
 
 ---
 

@@ -7,6 +7,27 @@
 
 ## Recent Changes
 
+### 2026-02-07 — Feature 2: Mission Card Display
+
+**What Changed:**
+- Built game screen with mission card (large text, centered, white card with shadow)
+- Added color swatch (100px circle) for Level 1 missions, with border for white swatch
+- Wired Play button to shuffle missions and show first card
+- Added Next button to advance through missions sequentially (reshuffles when all used)
+- Responsive styles for mission card across mobile/tablet
+
+**Why:**
+Feature 2 — the core game loop display. Tapping Play shows missions one at a time.
+
+**Technical:**
+| Item | Details |
+|------|---------|
+| Files | index.html, style.css, app.js |
+| Type | Feature |
+| Feature | Mission Card Display |
+
+---
+
 ### 2026-02-07 — Feature 1: Project Skeleton + Start Screen
 
 **What Changed:**

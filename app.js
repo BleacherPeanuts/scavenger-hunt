@@ -18,6 +18,9 @@
   const screenGame = document.getElementById("screen-game");
   const levelBtns = document.querySelectorAll(".level-btn");
   const btnPlay = document.getElementById("btn-play");
+  const missionText = document.getElementById("mission-text");
+  const colorSwatch = document.getElementById("color-swatch");
+  const btnNext = document.getElementById("btn-next");
 
   // --- Helpers ---
   function showScreen(screen) {
@@ -43,11 +46,36 @@
     });
   });
 
+  // --- Mission Display ---
+  function showMission() {
+    var mission = state.shuffledMissions[state.missionIndex];
+    missionText.textContent = mission.text;
+
+    if (mission.visual) {
+      colorSwatch.style.backgroundColor = mission.visual;
+      colorSwatch.setAttribute("data-color", mission.visual);
+      colorSwatch.hidden = false;
+    } else {
+      colorSwatch.hidden = true;
+    }
+  }
+
   // --- Play Button ---
   btnPlay.addEventListener("click", () => {
     state.stars = 0;
     state.missionIndex = 0;
     state.shuffledMissions = shuffle(MISSIONS[state.level]);
+    showMission();
     showScreen(screenGame);
+  });
+
+  // --- Next Button ---
+  btnNext.addEventListener("click", () => {
+    state.missionIndex++;
+    if (state.missionIndex >= state.shuffledMissions.length) {
+      state.missionIndex = 0;
+      state.shuffledMissions = shuffle(MISSIONS[state.level]);
+    }
+    showMission();
   });
 })();

@@ -133,6 +133,69 @@ body {
   box-shadow: 0 2px 6px #22C55E44;
 }
 
+/* === Game Screen === */
+.mission-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 340px;
+  min-height: 240px;
+  padding: 2rem 1.5rem;
+  background: #FFFFFF;
+  border-radius: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.color-swatch {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.color-swatch[data-color="#FFFFFF"] {
+  border: 3px solid #D1D5DB;
+}
+
+.mission-text {
+  font-size: 2rem;
+  font-weight: 800;
+  text-align: center;
+  color: #1E1E1E;
+  line-height: 1.3;
+}
+
+.game-actions {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  max-width: 340px;
+}
+
+.btn-next {
+  flex: 1;
+  min-height: 64px;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  background: #3B82F6;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: 0 4px 12px #3B82F644;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.btn-next:active {
+  transform: scale(0.96);
+  box-shadow: 0 2px 6px #3B82F644;
+}
+
 /* === Responsive — larger screens === */
 @media (min-width: 480px) {
   .title {
@@ -160,6 +223,24 @@ body {
     min-height: 80px;
     font-size: 1.75rem;
   }
+
+  .mission-card {
+    max-width: 400px;
+    min-height: 280px;
+  }
+
+  .color-swatch {
+    width: 120px;
+    height: 120px;
+  }
+
+  .mission-text {
+    font-size: 2.25rem;
+  }
+
+  .game-actions {
+    max-width: 400px;
+  }
 }
 
 @media (min-width: 768px) {
@@ -172,6 +253,24 @@ body {
   }
 
   .btn-play {
+    max-width: 480px;
+  }
+
+  .mission-card {
+    max-width: 480px;
+    min-height: 320px;
+  }
+
+  .color-swatch {
+    width: 140px;
+    height: 140px;
+  }
+
+  .mission-text {
+    font-size: 2.5rem;
+  }
+
+  .game-actions {
     max-width: 480px;
   }
 }
