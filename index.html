@@ -35,6 +35,12 @@
 
   <!-- Game Screen -->
   <div id="screen-game" class="screen">
+    <div class="star-jar" id="star-jar">
+      <div class="jar-body">
+        <div class="jar-fill" id="jar-fill"></div>
+      </div>
+      <span class="jar-count" id="jar-count">0</span>
+    </div>
     <div class="mission-card">
       <div id="color-swatch" class="color-swatch" hidden></div>
       <p id="mission-text" class="mission-text"></p>
@@ -48,6 +54,7 @@
       <button class="game-level-btn" data-level="3">🏠 Things</button>
     </div>
     <div class="game-actions">
+      <button id="btn-star" class="btn-star">Star</button>
       <button id="btn-next" class="btn-next">Next</button>
     </div>
     <div id="confetti-container" class="confetti-container"></div>

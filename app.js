@@ -26,9 +26,13 @@
   const missionText = document.getElementById("mission-text");
   const colorSwatch = document.getElementById("color-swatch");
   const btnNext = document.getElementById("btn-next");
+  const btnStar = document.getElementById("btn-star");
   const gameLevelBtns = document.querySelectorAll(".game-level-btn");
   const timerBar = document.getElementById("timer-bar");
   const missionCard = document.querySelector(".mission-card");
+  const jarFill = document.getElementById("jar-fill");
+  const jarCount = document.getElementById("jar-count");
+  const starJar = document.getElementById("star-jar");
 
   // --- Audio Context (lazy init on first user tap) ---
   var audioCtx = null;
@@ -36,6 +40,24 @@
   function getAudioCtx() {
     if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     return audioCtx;
+  }
+
+  function playTick(remaining) {
+    var ctx = getAudioCtx();
+    var now = ctx.currentTime;
+    // Pitch rises and duration shortens as time runs out
+    var freq = 600 + (7 - remaining) * 100;
+    var dur = 0.04 + remaining * 0.01;
+    var osc = ctx.createOscillator();
+    var gain = ctx.createGain();
+    osc.type = "square";
+    osc.frequency.setValueAtTime(freq, now);
+    gain.gain.setValueAtTime(0.12, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + dur);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start(now);
+    osc.stop(now + dur);
   }
 
   function playTimesUp() {
@@ -177,6 +199,10 @@
       var pct = (state.timerRemaining / TIMER_DURATION) * 100;
       timerBar.style.width = pct + "%";
 
+      if (state.timerRemaining <= 7 && state.timerRemaining > 0) {
+        playTick(state.timerRemaining);
+      }
+
       if (state.timerRemaining <= 5 && state.timerRemaining > 0) {
         timerBar.classList.add("warning");
       }
@@ -207,11 +233,77 @@
     startTimer();
   }
 
+  // --- Star Jar ---
+  var STAR_COOLDOWN = 2500;
+  var MAX_JAR_STARS = 20;
+
+  function playStarChime() {
+    var ctx = getAudioCtx();
+    var now = ctx.currentTime;
+    [880, 1108, 1320].forEach(function (freq, i) {
+      var osc = ctx.createOscillator();
+      var gain = ctx.createGain();
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(freq, now + i * 0.08);
+      gain.gain.setValueAtTime(0.15, now + i * 0.08);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.08 + 0.2);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(now + i * 0.08);
+      osc.stop(now + i * 0.08 + 0.25);
+    });
+  }
+
+  function updateJar() {
+    jarCount.textContent = state.stars;
+    var pct = Math.min((state.stars / MAX_JAR_STARS) * 100, 100);
+    jarFill.style.height = pct + "%";
+  }
+
+  function flyStarToJar() {
+    var star = document.createElement("div");
+    star.classList.add("flying-star");
+    star.textContent = "\u2B50";
+    // Start from star button position
+    var btnRect = btnStar.getBoundingClientRect();
+    var jarRect = starJar.getBoundingClientRect();
+    star.style.left = btnRect.left + btnRect.width / 2 - 16 + "px";
+    star.style.top = btnRect.top - 10 + "px";
+    // Animate toward jar
+    var dx = jarRect.left + jarRect.width / 2 - (btnRect.left + btnRect.width / 2);
+    var dy = jarRect.top + jarRect.height / 2 - btnRect.top;
+    star.style.setProperty("--dx", dx + "px");
+    star.style.setProperty("--dy", dy + "px");
+    document.body.appendChild(star);
+    // Use rAF to set end position after element is placed
+    requestAnimationFrame(function () {
+      star.style.transform = "translate(" + dx + "px, " + dy + "px) scale(0.3)";
+      star.style.opacity = "0";
+      star.style.transition = "all 0.5s ease-in";
+    });
+    setTimeout(function () { star.remove(); }, 600);
+  }
+
+  btnStar.addEventListener("click", function () {
+    if (btnStar.classList.contains("cooldown")) return;
+    state.stars++;
+    updateJar();
+    playStarChime();
+    flyStarToJar();
+
+    // Cooldown
+    btnStar.classList.add("cooldown");
+    setTimeout(function () {
+      btnStar.classList.remove("cooldown");
+    }, STAR_COOLDOWN);
+  });
+
   // --- Play Button ---
   btnPlay.addEventListener("click", () => {
     state.stars = 0;
     state.missionIndex = 0;
     state.shuffledMissions = shuffle(MISSIONS[state.level]);
+    updateJar();
     showMission();
     showScreen(screenGame);
   });

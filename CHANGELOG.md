@@ -7,6 +7,29 @@
 
 ## Recent Changes
 
+### 2026-02-07 — Feature 4: Star Button + Star Jar + Countdown Ticks
+
+**What Changed:**
+- Added accelerating tick sound from 7 seconds to 1 second (pitch rises, tempo increases)
+- Star button (gold, 64px+) with 2.5s cooldown (grays out after tap)
+- Star jar at top of game screen — fills with gold as stars accumulate
+- Flying star animation from button to jar on tap
+- Star chime sound (ascending triple sine) on each star awarded
+- Number overlay on jar shows total count
+- Stars reset on new session
+
+**Why:**
+Feature 4 — star rewards are the core engagement loop. Countdown ticks add urgency.
+
+**Technical:**
+| Item | Details |
+|------|---------|
+| Files | index.html, style.css, app.js |
+| Type | Feature |
+| Feature | Star Button + Star Jar + Countdown Sound |
+
+---
+
 ### 2026-02-07 — Feature 3: Timer + UI tweaks
 
 **What Changed:**

@@ -134,6 +134,93 @@ body {
 }
 
 /* === Game Screen === */
+
+/* Star Jar */
+.star-jar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.jar-body {
+  position: relative;
+  width: 56px;
+  height: 72px;
+  background: #F3F4F6;
+  border: 3px solid #D1D5DB;
+  border-radius: 0 0 12px 12px;
+  overflow: hidden;
+}
+
+.jar-body::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: -4px;
+  right: -4px;
+  height: 10px;
+  background: #D1D5DB;
+  border-radius: 4px;
+}
+
+.jar-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0%;
+  background: linear-gradient(to top, #EAB308, #FACC15);
+  transition: height 0.5s ease;
+}
+
+.jar-count {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #EAB308;
+}
+
+/* Flying star animation */
+.flying-star {
+  position: fixed;
+  font-size: 2rem;
+  pointer-events: none;
+  z-index: 999;
+  animation: fly-to-jar 0.6s ease-in forwards;
+}
+
+@keyframes fly-to-jar {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(0.3); opacity: 0; }
+}
+
+/* Star Button */
+.btn-star {
+  flex: 1;
+  min-height: 64px;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  background: #EAB308;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: 0 4px 12px #EAB30844;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.btn-star:active {
+  transform: scale(0.96);
+  box-shadow: 0 2px 6px #EAB30844;
+}
+
+.btn-star.cooldown {
+  background: #9CA3AF;
+  box-shadow: 0 4px 12px #9CA3AF44;
+  pointer-events: none;
+}
+
 .mission-card {
   display: flex;
   flex-direction: column;

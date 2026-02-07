@@ -1,20 +1,11 @@
 # Scavenger Hunt — Development TODO
 
 **Last Updated:** February 7, 2026
-**Current Sprint:** Feature 4 — Star Button + Animated Star Jar
+**Current Sprint:** Feature 5 — Session Flow
 
 ---
 
-## Current Sprint: Feature 4 — Star Button + Animated Star Jar
-
-### Feature 4 — Star Button + Animated Star Jar
-- [ ] Add large Star button (64px+)
-- [ ] Implement 2-3 second cooldown (gray out after tap)
-- [ ] Create star jar visual
-- [ ] Animate star flying into jar on tap
-- [ ] Add number overlay showing total stars
-- [ ] Jar fills up visually as stars accumulate
-- [ ] Commit and push: `feat: add star button and animated jar`
+## Current Sprint: Feature 5 — Session Flow
 
 ### Feature 5 — Session Flow
 - [ ] Add "Next" button to advance mission and reset timer
@@ -65,6 +56,17 @@
 - [x] Gentle visual signal at 0 (pulse/color shift, no alarm)
 - [x] Timer does NOT auto-advance the game
 - [x] Timer resets on next mission
+- [x] Accelerating tick sound from 7s countdown
+- [x] Committed and pushed
+
+### Feature 4 — Star Button + Animated Star Jar
+- [x] Add large Star button (64px+)
+- [x] Implement 2.5 second cooldown (gray out after tap)
+- [x] Create star jar visual (fills with gold)
+- [x] Animate star flying into jar on tap
+- [x] Add number overlay showing total stars
+- [x] Jar fills up visually as stars accumulate
+- [x] Star chime sound on tap
 - [x] Committed and pushed
 
 ---
@@ -96,7 +98,7 @@ Ideas to consider later (don't derail current work):
 | 1 | Project Skeleton + Start Screen | 2026-02-07 | 2026-02-07 |
 | 2 | Mission Card Display | 2026-02-07 | 2026-02-07 |
 | 3 | Timer | 2026-02-07 | 2026-02-07 |
-| 4 | Star Button + Star Jar | | |
+| 4 | Star Button + Star Jar | 2026-02-07 | 2026-02-07 |
 | 5 | Session Flow | | |
 | 6 | Level Switching | | |
 | 7 | PWA Setup | | |
