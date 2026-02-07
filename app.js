@@ -30,6 +30,92 @@
   const timerBar = document.getElementById("timer-bar");
   const missionCard = document.querySelector(".mission-card");
 
+  // --- Audio Context (lazy init on first user tap) ---
+  var audioCtx = null;
+
+  function getAudioCtx() {
+    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    return audioCtx;
+  }
+
+  function playTimesUp() {
+    var ctx = getAudioCtx();
+    var now = ctx.currentTime;
+
+    // Silly descending "wah wah waaah" trombone
+    var notes = [
+      { freq: 350, start: 0, dur: 0.2 },
+      { freq: 300, start: 0.22, dur: 0.2 },
+      { freq: 200, start: 0.44, dur: 0.5 },
+    ];
+
+    notes.forEach(function (n) {
+      var osc = ctx.createOscillator();
+      var gain = ctx.createGain();
+      osc.type = "sawtooth";
+      osc.frequency.setValueAtTime(n.freq, now + n.start);
+      // Slide down for the last note
+      if (n.freq === 200) {
+        osc.frequency.linearRampToValueAtTime(140, now + n.start + n.dur);
+      }
+      gain.gain.setValueAtTime(0.15, now + n.start);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + n.start + n.dur);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(now + n.start);
+      osc.stop(now + n.start + n.dur);
+    });
+  }
+
+  function playWoohoo() {
+    var ctx = getAudioCtx();
+    var now = ctx.currentTime;
+
+    // Quick ascending celebration jingle
+    var notes = [
+      { freq: 523, start: 0, dur: 0.1 },
+      { freq: 659, start: 0.1, dur: 0.1 },
+      { freq: 784, start: 0.2, dur: 0.1 },
+      { freq: 1047, start: 0.3, dur: 0.25 },
+    ];
+
+    notes.forEach(function (n) {
+      var osc = ctx.createOscillator();
+      var gain = ctx.createGain();
+      osc.type = "triangle";
+      osc.frequency.setValueAtTime(n.freq, now + n.start);
+      gain.gain.setValueAtTime(0.2, now + n.start);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + n.start + n.dur);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(now + n.start);
+      osc.stop(now + n.start + n.dur + 0.05);
+    });
+  }
+
+  // --- Confetti ---
+  var confettiContainer = document.getElementById("confetti-container");
+  var CONFETTI_COLORS = ["#EF4444", "#3B82F6", "#22C55E", "#EAB308", "#A855F7", "#EC4899", "#F97316"];
+
+  function spawnConfetti() {
+    var count = 40;
+    for (var i = 0; i < count; i++) {
+      var piece = document.createElement("div");
+      piece.classList.add("confetti-piece");
+      piece.style.left = Math.random() * 100 + "%";
+      piece.style.backgroundColor = CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)];
+      piece.style.animationDuration = (1 + Math.random() * 1.5) + "s";
+      piece.style.animationDelay = (Math.random() * 0.4) + "s";
+      piece.style.width = (6 + Math.random() * 8) + "px";
+      piece.style.height = (6 + Math.random() * 8) + "px";
+      confettiContainer.appendChild(piece);
+    }
+    // Clean up after animation
+    setTimeout(function () {
+      confettiContainer.innerHTML = "";
+    }, 3000);
+  }
+
   // --- Helpers ---
   function showScreen(screen) {
     document.querySelectorAll(".screen").forEach((s) => s.classList.remove("active"));
@@ -100,6 +186,7 @@
         timerBar.classList.remove("warning");
         timerBar.classList.add("expired");
         missionCard.classList.add("pulse");
+        playTimesUp();
       }
     }, 1000);
   }
@@ -131,6 +218,8 @@
 
   // --- Next Button ---
   btnNext.addEventListener("click", () => {
+    playWoohoo();
+    spawnConfetti();
     state.missionIndex++;
     if (state.missionIndex >= state.shuffledMissions.length) {
       state.missionIndex = 0;
