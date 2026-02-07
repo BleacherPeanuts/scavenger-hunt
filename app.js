@@ -28,13 +28,15 @@
   const btnNext = document.getElementById("btn-next");
   const btnStar = document.getElementById("btn-star");
   const btnDone = document.getElementById("btn-done");
+  const btnHome = document.getElementById("btn-home");
+  const btnGo = document.getElementById("btn-go");
   const screenCelebrate = document.getElementById("screen-celebrate");
   const celebrateCount = document.getElementById("celebrate-count");
   const btnPlayAgain = document.getElementById("btn-play-again");
   const confettiCelebrate = document.getElementById("confetti-container-celebrate");
   const gameLevelBtns = document.querySelectorAll(".game-level-btn");
   const timerBar = document.getElementById("timer-bar");
-  const missionCard = document.querySelector(".mission-card");
+  const missionCard = document.getElementById("mission-card");
   const jarFill = document.getElementById("jar-fill");
   const jarCount = document.getElementById("jar-count");
   const starJar = document.getElementById("star-jar");
@@ -180,7 +182,7 @@
       selectLevel(newLevel);
       state.missionIndex = 0;
       state.shuffledMissions = shuffle(MISSIONS[state.level]);
-      showMission();
+      showMission(true);
     });
   });
 
@@ -223,7 +225,7 @@
   }
 
   // --- Mission Display ---
-  function showMission() {
+  function showMission(autoStart) {
     var mission = state.shuffledMissions[state.missionIndex];
     missionText.textContent = mission.text;
 
@@ -235,8 +237,24 @@
       colorSwatch.hidden = true;
     }
 
-    startTimer();
+    if (autoStart) {
+      btnGo.hidden = true;
+      startTimer();
+    } else {
+      // Show Go button, pause timer bar at full
+      stopTimer();
+      timerBar.style.width = "100%";
+      timerBar.classList.remove("warning", "expired");
+      missionCard.classList.remove("pulse");
+      btnGo.hidden = false;
+    }
   }
+
+  // --- Go Button ---
+  btnGo.addEventListener("click", function () {
+    btnGo.hidden = true;
+    startTimer();
+  });
 
   // --- Star Jar ---
   var STAR_COOLDOWN = 2500;
@@ -309,7 +327,7 @@
     state.missionIndex = 0;
     state.shuffledMissions = shuffle(MISSIONS[state.level]);
     updateJar();
-    showMission();
+    showMission(false);
     showScreen(screenGame);
   });
 
@@ -380,6 +398,12 @@
       state.missionIndex = 0;
       state.shuffledMissions = shuffle(MISSIONS[state.level]);
     }
-    showMission();
+    showMission(true);
+  });
+
+  // --- Home Button ---
+  btnHome.addEventListener("click", function () {
+    stopTimer();
+    showScreen(screenStart);
   });
 })();

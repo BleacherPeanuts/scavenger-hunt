@@ -40,18 +40,22 @@
 
   <!-- Game Screen -->
   <div id="screen-game" class="screen">
-    <div class="star-jar" id="star-jar">
-      <div class="jar-body">
-        <div class="jar-fill" id="jar-fill"></div>
+    <div class="game-top-bar">
+      <button id="btn-home" class="btn-home">Home</button>
+      <div class="star-jar" id="star-jar">
+        <div class="jar-body">
+          <div class="jar-fill" id="jar-fill"></div>
+        </div>
+        <span class="jar-count" id="jar-count">0</span>
       </div>
-      <span class="jar-count" id="jar-count">0</span>
     </div>
-    <div class="mission-card">
+    <div class="mission-card" id="mission-card">
       <div id="color-swatch" class="color-swatch" hidden></div>
       <p id="mission-text" class="mission-text"></p>
       <div class="timer-track">
         <div id="timer-bar" class="timer-bar"></div>
       </div>
+      <button id="btn-go" class="btn-go">Go!</button>
     </div>
     <div class="game-level-switcher">
       <button class="game-level-btn selected" data-level="1">🎨 Colors</button>
