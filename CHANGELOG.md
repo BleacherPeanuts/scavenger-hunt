@@ -7,6 +7,28 @@
 
 ## Recent Changes
 
+### 2026-02-07 — Feature 7: PWA + GitHub Pages Deployment
+
+**What Changed:**
+- Created manifest.json for installable PWA
+- Created service worker (sw.js) for offline caching
+- Generated app icons (192px and 512px)
+- Added Apple mobile web app meta tags
+- Created GitHub Actions deploy workflow
+- Deployed to GitHub Pages: https://bleacherpeanuts.github.io/scavenger-hunt/
+
+**Why:**
+Feature 7 — app is now live on the internet and installable on phones/tablets.
+
+**Technical:**
+| Item | Details |
+|------|---------|
+| Files | manifest.json, sw.js, icons/, .github/workflows/deploy.yml, index.html |
+| Type | Feature |
+| Feature | PWA + Deployment |
+
+---
+
 ### 2026-02-07 — Feature 5: Session Flow + Celebration Screen
 
 **What Changed:**

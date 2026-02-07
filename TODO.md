@@ -1,21 +1,7 @@
 # Scavenger Hunt — Development TODO
 
 **Last Updated:** February 7, 2026
-**Current Sprint:** Feature 7 — PWA Setup
-
----
-
-## Current Sprint: Feature 7 — PWA Setup
-
-### Feature 7 — PWA Setup
-- [ ] Create manifest.json (name, icons, theme color, display: standalone)
-- [ ] Create app icons (192px and 512px)
-- [ ] Create service worker for offline caching
-- [ ] Test "Add to Home Screen" on iOS Safari
-- [ ] Test "Install" on Android Chrome
-- [ ] Verify offline functionality
-- [ ] Deploy to GitHub Pages
-- [ ] Commit and push: `feat: add PWA support`
+**Current Sprint:** All features complete!
 
 ---
 
@@ -69,6 +55,16 @@
 - [x] Smooth transition
 - [x] Committed and pushed (built during Feature 2)
 
+### Feature 7 — PWA Setup
+- [x] Create manifest.json (name, icons, theme color, display: standalone)
+- [x] Create app icons (192px and 512px)
+- [x] Create service worker for offline caching
+- [ ] Test "Add to Home Screen" on iOS Safari
+- [ ] Test "Install" on Android Chrome
+- [ ] Verify offline functionality
+- [x] Deploy to GitHub Pages
+- [x] Committed and pushed
+
 ---
 
 ## Parking Lot
@@ -101,4 +97,4 @@ Ideas to consider later (don't derail current work):
 | 4 | Star Button + Star Jar | 2026-02-07 | 2026-02-07 |
 | 5 | Session Flow | 2026-02-07 | 2026-02-07 |
 | 6 | Level Switching | 2026-02-07 | 2026-02-07 |
-| 7 | PWA Setup | | |
+| 7 | PWA Setup | 2026-02-07 | 2026-02-07 |
