@@ -1,26 +1,11 @@
 # Scavenger Hunt — Development TODO
 
 **Last Updated:** February 7, 2026
-**Current Sprint:** Feature 5 — Session Flow
+**Current Sprint:** Feature 7 — PWA Setup
 
 ---
 
-## Current Sprint: Feature 5 — Session Flow
-
-### Feature 5 — Session Flow
-- [ ] Add "Next" button to advance mission and reset timer
-- [ ] Add "Done" button to end session
-- [ ] Build celebration screen (total stars, confetti/animation)
-- [ ] Add "Play Again" button that returns to start screen
-- [ ] Stars reset on new session
-- [ ] Commit and push: `feat: add session flow and celebration screen`
-
-### Feature 6 — Level Switching Mid-Session
-- [ ] Add small level-switch control (unobtrusive, parent-facing)
-- [ ] Changing level preserves star count
-- [ ] New level starts fresh mission sequence
-- [ ] Smooth transition, no jarring screen change
-- [ ] Commit and push: `feat: add mid-session level switching`
+## Current Sprint: Feature 7 — PWA Setup
 
 ### Feature 7 — PWA Setup
 - [ ] Create manifest.json (name, icons, theme color, display: standalone)
@@ -69,6 +54,21 @@
 - [x] Star chime sound on tap
 - [x] Committed and pushed
 
+### Feature 5 — Session Flow
+- [x] Next button advances mission and resets timer
+- [x] Done button ends session
+- [x] Celebration screen with total stars, fanfare, and confetti
+- [x] Play Again button returns to start screen
+- [x] Stars reset on new session
+- [x] Committed and pushed
+
+### Feature 6 — Level Switching Mid-Session
+- [x] In-game level switcher (Colors, Shapes & Sizes, Things)
+- [x] Changing level preserves star count
+- [x] New level starts fresh mission sequence
+- [x] Smooth transition
+- [x] Committed and pushed (built during Feature 2)
+
 ---
 
 ## Parking Lot
@@ -99,6 +99,6 @@ Ideas to consider later (don't derail current work):
 | 2 | Mission Card Display | 2026-02-07 | 2026-02-07 |
 | 3 | Timer | 2026-02-07 | 2026-02-07 |
 | 4 | Star Button + Star Jar | 2026-02-07 | 2026-02-07 |
-| 5 | Session Flow | | |
-| 6 | Level Switching | | |
+| 5 | Session Flow | 2026-02-07 | 2026-02-07 |
+| 6 | Level Switching | 2026-02-07 | 2026-02-07 |
 | 7 | PWA Setup | | |

@@ -27,6 +27,11 @@
   const colorSwatch = document.getElementById("color-swatch");
   const btnNext = document.getElementById("btn-next");
   const btnStar = document.getElementById("btn-star");
+  const btnDone = document.getElementById("btn-done");
+  const screenCelebrate = document.getElementById("screen-celebrate");
+  const celebrateCount = document.getElementById("celebrate-count");
+  const btnPlayAgain = document.getElementById("btn-play-again");
+  const confettiCelebrate = document.getElementById("confetti-container-celebrate");
   const gameLevelBtns = document.querySelectorAll(".game-level-btn");
   const timerBar = document.getElementById("timer-bar");
   const missionCard = document.querySelector(".mission-card");
@@ -306,6 +311,64 @@
     updateJar();
     showMission();
     showScreen(screenGame);
+  });
+
+  // --- Celebration fanfare ---
+  function playFanfare() {
+    var ctx = getAudioCtx();
+    var now = ctx.currentTime;
+    var notes = [
+      { freq: 523, start: 0, dur: 0.15 },
+      { freq: 659, start: 0.12, dur: 0.15 },
+      { freq: 784, start: 0.24, dur: 0.15 },
+      { freq: 1047, start: 0.36, dur: 0.3 },
+      { freq: 784, start: 0.56, dur: 0.1 },
+      { freq: 1047, start: 0.66, dur: 0.4 },
+    ];
+    notes.forEach(function (n) {
+      var osc = ctx.createOscillator();
+      var gain = ctx.createGain();
+      osc.type = "triangle";
+      osc.frequency.setValueAtTime(n.freq, now + n.start);
+      gain.gain.setValueAtTime(0.2, now + n.start);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + n.start + n.dur);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(now + n.start);
+      osc.stop(now + n.start + n.dur + 0.05);
+    });
+  }
+
+  function spawnCelebrateConfetti() {
+    var count = 80;
+    for (var i = 0; i < count; i++) {
+      var piece = document.createElement("div");
+      piece.classList.add("confetti-piece");
+      piece.style.left = Math.random() * 100 + "%";
+      piece.style.backgroundColor = CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)];
+      piece.style.animationDuration = (1.5 + Math.random() * 2) + "s";
+      piece.style.animationDelay = (Math.random() * 0.8) + "s";
+      piece.style.width = (8 + Math.random() * 10) + "px";
+      piece.style.height = (8 + Math.random() * 10) + "px";
+      confettiCelebrate.appendChild(piece);
+    }
+    setTimeout(function () {
+      confettiCelebrate.innerHTML = "";
+    }, 4000);
+  }
+
+  // --- Done Button ---
+  btnDone.addEventListener("click", function () {
+    stopTimer();
+    celebrateCount.textContent = state.stars;
+    showScreen(screenCelebrate);
+    playFanfare();
+    spawnCelebrateConfetti();
+  });
+
+  // --- Play Again Button ---
+  btnPlayAgain.addEventListener("click", function () {
+    showScreen(screenStart);
   });
 
   // --- Next Button ---

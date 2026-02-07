@@ -7,6 +7,26 @@
 
 ## Recent Changes
 
+### 2026-02-07 — Feature 5: Session Flow + Celebration Screen
+
+**What Changed:**
+- Done button (subtle, below action buttons) stops timer and shows celebration screen
+- Celebration screen with big star count, fanfare jingle, and massive confetti burst
+- Play Again button returns to start screen (stars reset on new session)
+- Full game loop now works: Start → Play → Missions → Done → Celebrate → Play Again
+
+**Why:**
+Feature 5 — completes the core game loop. Sessions now have a proper ending.
+
+**Technical:**
+| Item | Details |
+|------|---------|
+| Files | index.html, style.css, app.js |
+| Type | Feature |
+| Feature | Session Flow + Celebration |
+
+---
+
 ### 2026-02-07 — Feature 4: Star Button + Star Jar + Countdown Ticks
 
 **What Changed:**
