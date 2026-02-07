@@ -196,6 +196,40 @@ body {
   box-shadow: 0 2px 6px #3B82F644;
 }
 
+/* In-Game Level Switcher */
+.game-level-switcher {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 340px;
+}
+
+.game-level-btn {
+  flex: 1;
+  min-height: 44px;
+  padding: 0.5rem 0.25rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #6B7280;
+  background: #F3F4F6;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.game-level-btn.selected {
+  color: #7C3AED;
+  background: #F3E8FF;
+  border-color: #7C3AED;
+}
+
+.game-level-btn:active {
+  transform: scale(0.96);
+}
+
 /* === Responsive — larger screens === */
 @media (min-width: 480px) {
   .title {
@@ -241,6 +275,10 @@ body {
   .game-actions {
     max-width: 400px;
   }
+
+  .game-level-switcher {
+    max-width: 400px;
+  }
 }
 
 @media (min-width: 768px) {
@@ -271,6 +309,10 @@ body {
   }
 
   .game-actions {
+    max-width: 480px;
+  }
+
+  .game-level-switcher {
     max-width: 480px;
   }
 }

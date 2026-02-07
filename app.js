@@ -21,6 +21,7 @@
   const missionText = document.getElementById("mission-text");
   const colorSwatch = document.getElementById("color-swatch");
   const btnNext = document.getElementById("btn-next");
+  const gameLevelBtns = document.querySelectorAll(".game-level-btn");
 
   // --- Helpers ---
   function showScreen(screen) {
@@ -37,12 +38,29 @@
     return a;
   }
 
-  // --- Level Selection ---
+  // --- Sync all level buttons (start screen + game screen) ---
+  function selectLevel(level) {
+    state.level = level;
+    levelBtns.forEach((b) => b.classList.toggle("selected", parseInt(b.dataset.level, 10) === level));
+    gameLevelBtns.forEach((b) => b.classList.toggle("selected", parseInt(b.dataset.level, 10) === level));
+  }
+
+  // --- Level Selection (start screen) ---
   levelBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
-      levelBtns.forEach((b) => b.classList.remove("selected"));
-      btn.classList.add("selected");
-      state.level = parseInt(btn.dataset.level, 10);
+      selectLevel(parseInt(btn.dataset.level, 10));
+    });
+  });
+
+  // --- Level Selection (game screen) ---
+  gameLevelBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      var newLevel = parseInt(btn.dataset.level, 10);
+      if (newLevel === state.level) return;
+      selectLevel(newLevel);
+      state.missionIndex = 0;
+      state.shuffledMissions = shuffle(MISSIONS[state.level]);
+      showMission();
     });
   });
 
