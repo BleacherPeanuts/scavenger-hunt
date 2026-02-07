@@ -6,7 +6,7 @@
   "use strict";
 
   // --- Constants ---
-  var TIMER_DURATION = 20;
+  var TIMER_DURATION = 30;
 
   // --- State ---
   const state = {
@@ -100,20 +100,36 @@
     var ctx = getAudioCtx();
     var now = ctx.currentTime;
 
-    // Quick ascending celebration jingle
+    // Bright ascending celebration jingle — two layers for fullness
     var notes = [
-      { freq: 523, start: 0, dur: 0.1 },
-      { freq: 659, start: 0.1, dur: 0.1 },
-      { freq: 784, start: 0.2, dur: 0.1 },
-      { freq: 1047, start: 0.3, dur: 0.25 },
+      { freq: 523, start: 0, dur: 0.12 },
+      { freq: 659, start: 0.1, dur: 0.12 },
+      { freq: 784, start: 0.2, dur: 0.12 },
+      { freq: 1047, start: 0.3, dur: 0.35 },
+      { freq: 1319, start: 0.45, dur: 0.3 },
     ];
 
+    // Main melody
     notes.forEach(function (n) {
       var osc = ctx.createOscillator();
       var gain = ctx.createGain();
       osc.type = "triangle";
       osc.frequency.setValueAtTime(n.freq, now + n.start);
-      gain.gain.setValueAtTime(0.2, now + n.start);
+      gain.gain.setValueAtTime(0.3, now + n.start);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + n.start + n.dur);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(now + n.start);
+      osc.stop(now + n.start + n.dur + 0.05);
+    });
+
+    // Harmony layer (octave below, softer)
+    notes.forEach(function (n) {
+      var osc = ctx.createOscillator();
+      var gain = ctx.createGain();
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(n.freq / 2, now + n.start);
+      gain.gain.setValueAtTime(0.15, now + n.start);
       gain.gain.exponentialRampToValueAtTime(0.001, now + n.start + n.dur);
       osc.connect(gain);
       gain.connect(ctx.destination);
