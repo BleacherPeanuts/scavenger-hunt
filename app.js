@@ -5,12 +5,17 @@
 (function () {
   "use strict";
 
+  // --- Constants ---
+  var TIMER_DURATION = 20;
+
   // --- State ---
   const state = {
     level: 1,
     stars: 0,
     missionIndex: 0,
     shuffledMissions: [],
+    timerRemaining: TIMER_DURATION,
+    timerInterval: null,
   };
 
   // --- DOM refs ---
@@ -22,6 +27,8 @@
   const colorSwatch = document.getElementById("color-swatch");
   const btnNext = document.getElementById("btn-next");
   const gameLevelBtns = document.querySelectorAll(".game-level-btn");
+  const timerBar = document.getElementById("timer-bar");
+  const missionCard = document.querySelector(".mission-card");
 
   // --- Helpers ---
   function showScreen(screen) {
@@ -64,6 +71,39 @@
     });
   });
 
+  // --- Timer ---
+  function stopTimer() {
+    if (state.timerInterval) {
+      clearInterval(state.timerInterval);
+      state.timerInterval = null;
+    }
+  }
+
+  function startTimer() {
+    stopTimer();
+    state.timerRemaining = TIMER_DURATION;
+    timerBar.style.width = "100%";
+    timerBar.classList.remove("warning", "expired");
+    missionCard.classList.remove("pulse");
+
+    state.timerInterval = setInterval(function () {
+      state.timerRemaining--;
+      var pct = (state.timerRemaining / TIMER_DURATION) * 100;
+      timerBar.style.width = pct + "%";
+
+      if (state.timerRemaining <= 5 && state.timerRemaining > 0) {
+        timerBar.classList.add("warning");
+      }
+
+      if (state.timerRemaining <= 0) {
+        stopTimer();
+        timerBar.classList.remove("warning");
+        timerBar.classList.add("expired");
+        missionCard.classList.add("pulse");
+      }
+    }, 1000);
+  }
+
   // --- Mission Display ---
   function showMission() {
     var mission = state.shuffledMissions[state.missionIndex];
@@ -76,6 +116,8 @@
     } else {
       colorSwatch.hidden = true;
     }
+
+    startTimer();
   }
 
   // --- Play Button ---

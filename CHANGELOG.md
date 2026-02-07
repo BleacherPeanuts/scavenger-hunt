@@ -7,6 +7,29 @@
 
 ## Recent Changes
 
+### 2026-02-07 — Feature 3: Timer + UI tweaks
+
+**What Changed:**
+- Added 20-second progress bar timer inside mission card
+- Timer bar turns yellow at 5 seconds, red at 0
+- Gentle card pulse animation when timer expires (no alarm, no penalty)
+- Timer resets on Next and on level switch
+- Renamed "Shapes" to "Shapes & Sizes" everywhere
+- Added emoji icons to in-game level switcher buttons
+- Added how-to-play instructions popup to Parking Lot in TODO.md
+
+**Why:**
+Feature 3 — gentle visual timer gives structure without stress. UI tweaks per feedback.
+
+**Technical:**
+| Item | Details |
+|------|---------|
+| Files | index.html, style.css, app.js, TODO.md |
+| Type | Feature |
+| Feature | Timer |
+
+---
+
 ### 2026-02-07 — Feature 2: Mission Card Display
 
 **What Changed:**

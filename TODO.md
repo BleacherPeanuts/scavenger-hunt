@@ -1,19 +1,11 @@
 # Scavenger Hunt — Development TODO
 
 **Last Updated:** February 7, 2026
-**Current Sprint:** Feature 3 — Timer
+**Current Sprint:** Feature 4 — Star Button + Animated Star Jar
 
 ---
 
-## Current Sprint: Feature 3 — Timer
-
-### Feature 3 — Timer
-- [ ] Add 20-second visual countdown (progress bar)
-- [ ] Timer starts when mission appears
-- [ ] Gentle visual signal at 0 (pulse/color shift, no alarm)
-- [ ] Timer does NOT auto-advance the game
-- [ ] Timer resets on next mission
-- [ ] Commit and push: `feat: add gentle countdown timer`
+## Current Sprint: Feature 4 — Star Button + Animated Star Jar
 
 ### Feature 4 — Star Button + Animated Star Jar
 - [ ] Add large Star button (64px+)
@@ -67,11 +59,21 @@
 - [x] Test all three levels display correctly
 - [x] Committed and pushed
 
+### Feature 3 — Timer
+- [x] Add 20-second visual countdown (progress bar)
+- [x] Timer starts when mission appears
+- [x] Gentle visual signal at 0 (pulse/color shift, no alarm)
+- [x] Timer does NOT auto-advance the game
+- [x] Timer resets on next mission
+- [x] Committed and pushed
+
 ---
 
 ## Parking Lot
 
 Ideas to consider later (don't derail current work):
+
+- [ ] How-to-play instructions popup on first open — Why: Helps grandparents/parents understand the game without explanation
 
 - [ ] Sound effects (cheer on star, drumroll on new mission) — Why: Fun polish, not critical for v1
 - [ ] Custom mission input (adult types in a mission) — Why: Nice for variety, add after core works
@@ -93,7 +95,7 @@ Ideas to consider later (don't derail current work):
 |--------|---------|---------|-----------|
 | 1 | Project Skeleton + Start Screen | 2026-02-07 | 2026-02-07 |
 | 2 | Mission Card Display | 2026-02-07 | 2026-02-07 |
-| 3 | Timer | | |
+| 3 | Timer | 2026-02-07 | 2026-02-07 |
 | 4 | Star Button + Star Jar | | |
 | 5 | Session Flow | | |
 | 6 | Level Switching | | |
