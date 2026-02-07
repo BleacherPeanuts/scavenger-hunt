@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scavenger Hunt!</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Start Screen -->
+  <div id="screen-start" class="screen active">
+    <h1 class="title">Scavenger Hunt!</h1>
+
+    <div class="level-selector">
+      <p class="level-label">Pick a Level</p>
+      <div class="level-buttons">
+        <button class="level-btn selected" data-level="1">
+          <span class="level-emoji">🎨</span>
+          <span class="level-name">Colors</span>
+        </button>
+        <button class="level-btn" data-level="2">
+          <span class="level-emoji">🔷</span>
+          <span class="level-name">Shapes</span>
+        </button>
+        <button class="level-btn" data-level="3">
+          <span class="level-emoji">🏠</span>
+          <span class="level-name">Things</span>
+        </button>
+      </div>
+    </div>
+
+    <button id="btn-play" class="btn-play">Let's Play!</button>
+  </div>
+
+  <!-- Game Screen (placeholder for Feature 2+) -->
+  <div id="screen-game" class="screen">
+    <p>Game will go here.</p>
+  </div>
+
+  <script src="missions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

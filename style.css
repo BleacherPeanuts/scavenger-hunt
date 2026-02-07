@@ -1,0 +1,177 @@
+/* === Reset & Base === */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #FFF7ED;
+  color: #1E1E1E;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* === Screen Management === */
+.screen {
+  display: none;
+  width: 100%;
+  min-height: 100dvh;
+}
+
+.screen.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  gap: 2.5rem;
+}
+
+/* === Start Screen === */
+.title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-align: center;
+  color: #7C3AED;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+/* Level Selector */
+.level-selector {
+  width: 100%;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.level-label {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #6B7280;
+}
+
+.level-buttons {
+  display: flex;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.level-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 88px;
+  padding: 0.75rem 0.5rem;
+  border: 3px solid #E5E7EB;
+  border-radius: 16px;
+  background: #FFFFFF;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.level-btn .level-emoji {
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+.level-btn .level-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #374151;
+}
+
+.level-btn.selected {
+  border-color: #7C3AED;
+  background: #F3E8FF;
+  box-shadow: 0 0 0 2px #7C3AED33;
+}
+
+.level-btn.selected .level-name {
+  color: #7C3AED;
+}
+
+.level-btn:active {
+  transform: scale(0.96);
+}
+
+/* Play Button */
+.btn-play {
+  width: 100%;
+  max-width: 340px;
+  min-height: 72px;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  background: #22C55E;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: 0 4px 12px #22C55E44;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.btn-play:active {
+  transform: scale(0.96);
+  box-shadow: 0 2px 6px #22C55E44;
+}
+
+/* === Responsive — larger screens === */
+@media (min-width: 480px) {
+  .title {
+    font-size: 3rem;
+  }
+
+  .level-selector {
+    max-width: 400px;
+  }
+
+  .level-btn {
+    min-height: 100px;
+  }
+
+  .level-btn .level-emoji {
+    font-size: 2rem;
+  }
+
+  .level-btn .level-name {
+    font-size: 1.05rem;
+  }
+
+  .btn-play {
+    max-width: 400px;
+    min-height: 80px;
+    font-size: 1.75rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 3.5rem;
+  }
+
+  .level-selector {
+    max-width: 480px;
+  }
+
+  .btn-play {
+    max-width: 480px;
+  }
+}
